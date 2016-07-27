@@ -62,7 +62,11 @@ public class CassandraData {
    */
 
   protected static Session createSession() {
-    Cluster cluster = Cluster.builder().addContactPoint("localhost").build();
+    String addr = System.getenv("CASSANDRA_CLUSTER");
+    if(addr == null) {
+      addr = "localhost";
+    }
+    Cluster cluster = Cluster.builder().addContactPoint(addr).build();
     return cluster.connect("playlist");
   }
 }

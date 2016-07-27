@@ -92,7 +92,7 @@ public class PlaylistTracksServlet extends HttpServlet {
     try {
       playlist.addTrackToPlaylist(newPlaylistTrack);
     } catch (Exception e) {
-      throw new ServletException("Couldn't add track to playlist");
+      throw new ServletException("Couldn't add track to playlist",e);
     }
   }
 
